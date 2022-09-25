@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Micro-Ventas Login</title>
+	<link rel="stylesheet" type="text/css" href="style1.css">
+</head>
+<body>
+
+	<div class="container">
+		<nav>
+			<div class="logo-title">
+				<h1>Micro-Ventas</h1>
+			</div>
+			<ul>
+				<a href="#" onclick="showSignUp();">Quiero Registrarme!</a>
+			</ul>
+		</nav>
+
+		<main>
+
+			<div class="letters">
+				<h1>Micro-Ventas</h1>
+				<h2>todo lo que necesitas a la vuelta de la esquina</h2>
+			</div>
+
+			<form action="#" method="POST" onsubmit="return validateForm(this);">
+				<div class="login-form">
+					<h3><i>Ingresa tus datos para Iniciar Sesión</i></h3>
+
+					<div class="inputs">
+						<p>Usuario</p>
+						<input type="text" name="user">
+
+						<p>Contraseña</p>
+						<input type="password" name="password">
+					</div>
+
+					<div class="submit-form">
+						<input type="submit" name="start-session" value="ACEPTAR">
+					</div>
+				</div>	
+			</form>
+
+		</main>
+
+		<footer>
+			<p>Creaded by Código Izquerida Company C.A. de S.V. 2021 - 2030</p>
+		</footer>
+	</div>
+
+
+	<div class="signup-form" id="hiddenForm">
+
+		<button onclick="hideSignUp();" id="x">X</button>
+
+		<h4><i>Registrate y Se Parte de Esta Gran Comunidad</i></h4>
+		
+			<form action="#" method="POST">
+				<div class="inputs">
+					
+					<div class="text">
+						<input type="text" name="myEmail" placeholder="Correo Electrónico" required="required">
+						<input type="text" name="myUsername" placeholder="Nombre de Usuario" required="required">
+						<input type="text" name="myPassword" placeholder="Escribe tu Contraseña" required="required">
+						<input type="text" name="confirmedPassword" placeholder="Confirma tu Contraseña" required="required">
+					</div>
+
+					<div class="radio">
+						<p><input type="radio" name="genre" value="male"> Hombre</p>
+						<p><input type="radio" name="genre" value="female"> Mujer</p>
+						<p><input type="radio" name="genre" value="indefined" checked> Sin Género</p>
+					</div>
+
+				</div>
+			
+
+				<div class="acepted-button">
+					<input type="submit" name="" value="Aceptar">
+				</div>
+			</form>
+
+	</div>
+	
+
+	<script type="text/javascript">
+
+
+		function validateForm(form) {
+
+			result = validateUser(form);
+			result += validatePassword(form);
+
+			if(result == "") {
+				return true;
+			} else {
+				alert(result);
+				return false;
+			}
+
+		}
+		
+		
+		function validateUser(form) {
+
+			nombre = form.user.value;
+
+			if(nombre == "") {
+				return "Por favor Ingresa tu nombre de Usuario\n";
+			}
+			else if(nombre.length < 4) {
+				return "El nombre de usuario debe ser mayor a 5 caracteres\n";
+			}
+
+			else if(/[^a-zA-Z]/.test(nombre)) {
+				return "El nombre de usuario solo admite letras en mayusculas y minusculas\n";
+
+			} else {
+				return "";
+			}
+		}
+
+
+		function validatePassword(form) {
+
+			password = form.password.value;
+			
+			if(password == "") {
+				return "You must type your password!\n";
+			}
+
+			else if(password.length < 5) {
+				return "Your password must have at least 6 characters\n";
+			}
+
+			else if(/[^a-zA-Z]/.test(password)) {
+				return "Your password must contain at least letters in uppercase and lowercase\n";
+			} else {
+				return "";
+			}
+		}
+
+
+		function showSignUp() {
+
+			idFormSignUp = document.getElementById("hiddenForm");
+			idFormSignUp.style.display = "flex";
+		}
+
+
+		function hideSignUp() {
+			idFormSignUp = document.getElementById("hiddenForm");
+			idFormSignUp.style.display = "none";
+		}
+	</script>
+
+</body>
+</html>
